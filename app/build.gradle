@@ -44,4 +44,5 @@ dependencies {
     // view model
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

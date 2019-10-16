@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Movie Discovery</string>
+    <string name="date_from">Date from : </string>
+    <string name="date_to">Date to : </string>
+    <string name="get_movies">Get movies</string>
 </resources>

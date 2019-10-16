@@ -2,8 +2,6 @@ package com.pavlekuzevski.moviediscovery.ui.base;
 
 import android.os.Bundle;
 
-import javax.inject.Inject;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +10,6 @@ import androidx.databinding.ViewDataBinding;
 import dagger.android.AndroidInjection;
 
 public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
-
-
 
     private T viewDataBinding;
     private V viewModel;
