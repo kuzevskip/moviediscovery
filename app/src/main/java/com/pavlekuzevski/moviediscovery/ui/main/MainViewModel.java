@@ -4,7 +4,7 @@ import com.pavlekuzevski.moviediscovery.data.DataRepository;
 import com.pavlekuzevski.moviediscovery.ui.base.BaseViewModel;
 import com.pavlekuzevski.moviediscovery.utils.rx.SchedulerProvider;
 
-public class MainViewModel extends BaseViewModel {
+public class MainViewModel extends BaseViewModel<MainNavigator> {
     public MainViewModel(DataRepository dataRepository, SchedulerProvider schedulerProvider) {
         super(dataRepository, schedulerProvider);
     }
@@ -21,5 +21,13 @@ public class MainViewModel extends BaseViewModel {
                     setIsLoading(false);
                 }));
 
+    }
+
+    public void onBeginDateClickListener(){
+        getNavigator().selectBeginDate();
+    }
+
+    public void onEndDateClickListener(){
+        getNavigator().selectEndDate();
     }
 }

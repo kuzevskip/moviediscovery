@@ -3,23 +3,19 @@ package com.pavlekuzevski.moviediscovery.ui.base;
 import com.pavlekuzevski.moviediscovery.data.DataRepository;
 import com.pavlekuzevski.moviediscovery.utils.rx.SchedulerProvider;
 
+import java.lang.ref.WeakReference;
+
 import androidx.databinding.ObservableBoolean;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
 
-public class BaseViewModel extends ViewModel {
-
-    public DataRepository getDataRepository() {
-        return dataRepository;
-    }
-
-    public SchedulerProvider getSchedulerProvider() {
-        return schedulerProvider;
-    }
+public class BaseViewModel<N> extends ViewModel {
 
     private DataRepository dataRepository;
     private SchedulerProvider schedulerProvider;
     private CompositeDisposable compositeDisposable;
+
+    private WeakReference<N> navigator;
 
     private final ObservableBoolean isLoading = new ObservableBoolean();
 
@@ -40,6 +36,22 @@ public class BaseViewModel extends ViewModel {
 
     public CompositeDisposable getCompositeDisposable() {
         return compositeDisposable;
+    }
+
+    public DataRepository getDataRepository() {
+        return dataRepository;
+    }
+
+    public SchedulerProvider getSchedulerProvider() {
+        return schedulerProvider;
+    }
+
+    public N getNavigator() {
+        return navigator.get();
+    }
+
+    public void setNavigator(N navigator) {
+        this.navigator = new WeakReference<>(navigator);
     }
 
     @Override
