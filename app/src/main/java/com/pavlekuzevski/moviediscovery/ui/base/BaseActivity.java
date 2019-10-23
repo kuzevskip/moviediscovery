@@ -9,7 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import dagger.android.AndroidInjection;
 
-public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
+public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity
+        implements BaseFragment.Callback {
 
     private T viewDataBinding;
     private V viewModel;
@@ -56,5 +57,15 @@ public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseVie
         }
         viewDataBinding.setVariable(getBindingVariable(), viewModel);
         viewDataBinding.executePendingBindings();
+    }
+
+    @Override
+    public void onFragmentAttached() {
+
+    }
+
+    @Override
+    public void onFragmentDetached(String tag) {
+
     }
 }
