@@ -43,5 +43,6 @@ ext {
 
     recyclerViewVersion = '1.0.0'
     cardViewVersion = '1.0.0'
+    glideVersion = '4.8.0'
 
 }

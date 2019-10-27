@@ -71,4 +71,8 @@ public class Movie {
         return overview;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
+
 }
