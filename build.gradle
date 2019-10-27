@@ -41,4 +41,7 @@ ext {
     rxjava2Version = '2.1.9'
     rxandroidVersion = '2.1.0'
 
+    recyclerViewVersion = '1.0.0'
+    cardViewVersion = '1.0.0'
+
 }

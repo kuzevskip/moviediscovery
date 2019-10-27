@@ -11,16 +11,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
 
     public void getMovies() {
         setIsLoading(true);
-        getCompositeDisposable().add(getDataRepository().getMovies("en","release_date.desc",
-                false, false, 1, "2019-07-18", "2019-08-18")
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(moviesResponse -> {
-                    setIsLoading(false);
-                }, throwable -> {
-                    setIsLoading(false);
-                }));
-
+        getNavigator().showMoviesList();
     }
 
     public void onBeginDateClickListener(){

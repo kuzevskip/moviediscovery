@@ -21,4 +21,8 @@ public class MoviesResponse {
     @Expose
     @SerializedName("results")
     private List<Movie> movies;
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
 }

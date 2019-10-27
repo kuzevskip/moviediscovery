@@ -1,6 +1,7 @@
 package com.pavlekuzevski.moviediscovery.di.builder;
 
 import com.pavlekuzevski.moviediscovery.ui.main.MainActivity;
+import com.pavlekuzevski.moviediscovery.ui.movielist.MovieListFragmentProvider;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -8,6 +9,6 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = {MovieListFragmentProvider.class})
     abstract MainActivity bindMainActivity();
 }

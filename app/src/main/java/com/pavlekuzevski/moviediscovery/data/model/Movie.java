@@ -58,4 +58,17 @@ public class Movie {
     @Expose
     @SerializedName("poster_path")
     private String posterPath;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
 }
