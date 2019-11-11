@@ -8,7 +8,7 @@ import com.pavlekuzevski.moviediscovery.ViewModelProviderFactory;
 import com.pavlekuzevski.moviediscovery.databinding.ActivityMainBinding;
 import com.pavlekuzevski.moviediscovery.ui.base.BaseActivity;
 import com.pavlekuzevski.moviediscovery.ui.movielist.MovieListFragment;
-import com.pavlekuzevski.moviediscovery.utils.CalendarUtils;
+import com.pavlekuzevski.moviediscovery.ui.selectdates.SelectDatesFragment;
 
 import javax.inject.Inject;
 
@@ -23,7 +23,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
-    private ActivityMainBinding activityMainBinding;
     private MainViewModel mainViewModel;
 
     @Inject
@@ -32,8 +31,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding = getViewDataBinding();
         mainViewModel.setNavigator(this);
+        showSelectDates();
     }
 
     @Override
@@ -53,16 +52,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
-    public void selectBeginDate() {
-        CalendarUtils.selectDate(this, activityMainBinding.dateFrom);
-    }
-
-    @Override
-    public void selectEndDate() {
-        CalendarUtils.selectDate(this, activityMainBinding.dateTo);
-    }
-
-    @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return fragmentDispatchingAndroidInjector;
     }
@@ -72,10 +61,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
-                //.setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
                 .add(R.id.mainRoot, MovieListFragment.newInstance(), MovieListFragment.TAG)
                 .commit();
     }
 
-
+    private void showSelectDates() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .add(R.id.mainRoot, SelectDatesFragment.newInstance(), SelectDatesFragment.TAG)
+                .commit();
+    }
 }

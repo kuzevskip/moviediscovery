@@ -8,6 +8,7 @@ import com.pavlekuzevski.moviediscovery.R;
 import com.pavlekuzevski.moviediscovery.ViewModelProviderFactory;
 import com.pavlekuzevski.moviediscovery.databinding.FragmentMovieListBinding;
 import com.pavlekuzevski.moviediscovery.ui.base.BaseFragment;
+import com.pavlekuzevski.moviediscovery.ui.main.MainViewModel;
 
 import javax.inject.Inject;
 
@@ -17,7 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-public class MovieListFragment extends BaseFragment<FragmentMovieListBinding, MovieListViewModel> {
+public class MovieListFragment extends BaseFragment<FragmentMovieListBinding, MainViewModel> {
     public static final String TAG = MovieListFragment.class.getSimpleName();
 
     @Inject
@@ -30,7 +31,8 @@ public class MovieListFragment extends BaseFragment<FragmentMovieListBinding, Mo
 
     @Inject
     ViewModelProviderFactory factory;
-    private MovieListViewModel movieListViewModel;
+
+    private MainViewModel viewModel;
 
     public static MovieListFragment newInstance() {
         Bundle args = new Bundle();
@@ -50,9 +52,9 @@ public class MovieListFragment extends BaseFragment<FragmentMovieListBinding, Mo
     }
 
     @Override
-    public MovieListViewModel getViewModel() {
-        movieListViewModel = ViewModelProviders.of(this,factory).get(MovieListViewModel.class);
-        return movieListViewModel;
+    public MainViewModel getViewModel() {
+        viewModel = ViewModelProviders.of(this,factory).get(MainViewModel.class);
+        return viewModel;
     }
 
     @Override
@@ -63,5 +65,4 @@ public class MovieListFragment extends BaseFragment<FragmentMovieListBinding, Mo
         fragmentMovieListBinding.moviesRecyclerView.setItemAnimator(new DefaultItemAnimator());
         fragmentMovieListBinding.moviesRecyclerView.setAdapter(movieListAdapter);
     }
-
 }

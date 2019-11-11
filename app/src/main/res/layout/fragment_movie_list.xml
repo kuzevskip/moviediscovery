@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.pavlekuzevski.moviediscovery.ui.movielist.MovieListViewModel" />
+            type="com.pavlekuzevski.moviediscovery.ui.main.MainViewModel" />
 
     </data>
 
